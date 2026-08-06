@@ -15,7 +15,7 @@
 | 中文 | English |
 |---|---|
 | **五层流程**：访谈 → 资料拆分 → 规格技法 → 写作循环 → 修订与发布 | **5-stage pipeline**: Interview → Setup → Craft Specs → Writing Loop → Revision & Release |
-| **28 份规格文档**：视角/人物/描写/节奏/风格/反AI/世界观/爽点/修订/市场/平台…… | **28 craft spec documents**: POV / character / description / pacing / style / anti-AI / worldbuilding / payoff / revision / market / platform… |
+| **29 份规格文档**：视角/人物/描写/节奏/风格/反AI/世界观/爽点/修订/市场/平台…… | **29 craft spec documents**: POV / character / description / pacing / style / anti-AI / worldbuilding / payoff / revision / market / platform… |
 | **34 位作家技法库**：世界 12 + 中国 12 + 网文 10 | **34-writer technique library**: 12 world + 12 Chinese + 10 web-novel |
 | **8 大类型风格**：仙侠/古典/修真/武侠/玄幻/耽美/架空/穿越 | **8 genre styles**: xianxia / classical / xiuzhen / wuxia / xuanhuan / danmei / alternate / transmigration |
 | **记忆系统**：故事圣经/弧线/时间线/伏笔台账/爽点/canon/issues——支撑长篇连续性 | **Memory system**: bible / arcs / timeline / foreshadowing / payoff / canon / issues — long-series continuity |
@@ -62,8 +62,8 @@ novel-craft/
 ├── LICENSE                   # MIT 许可 / MIT License
 ├── CONTRIBUTING.md           # 贡献指南 / Contribution guide
 ├── CHANGELOG.md              # 版本记录 / Changelog
-├── references/               # 28 份规格文档（按"何时读"路由）
-│                             # 28 spec docs (routed by "when to read")
+├── references/               # 29 份规格文档（按"何时读"路由）
+│                             # 29 spec docs (routed by "when to read")
 │   ├── 00-interview.md       # 访谈：问清写什么书/写给谁
 │   ├── 00b-project-setup.md  # 资料拆分：生成顺序/目录/铁律
 │   ├── 00c-genre-docs.md     # 题材→文档自动装配
@@ -90,7 +90,10 @@ novel-craft/
 │   ├── 18-story-structure.md # 故事结构模板库 / Story structure templates
 │   ├── 19-reader-feedback.md # 读者反馈与Beta阅读 / Beta readers
 │   ├── 20-pitch-materials.md # 投稿与发布材料 / Pitch materials
-│   └── 21-update-cadence.md  # 存稿与更新节奏 / Update cadence
+│   ├── 21-update-cadence.md  # 存稿与更新节奏 / Update cadence
+│   ├── 22-scene-interaction.md # 场景人物交互（每章必读）/ Scene interaction
+│   ├── 23-prose-expression.md  # 文笔表达七维度（每章必读）/ Prose expression
+│   └── 24-group-sex.md         # 自愿多人性场景（仅当涉及）/ Consensual group sex
 ├── templates/                # 7 份项目文档模板 + 6 份记忆模板
 │                             # 7 project templates + 6 memory templates
 ├── examples/                 # 视角/人物示范 / POV & character examples
