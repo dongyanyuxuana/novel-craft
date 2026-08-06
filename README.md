@@ -4,6 +4,10 @@
 >
 > A **universal novel-writing skill pack** for AI coding assistants — covering the full pipeline from idea to publication: interview → setup → craft specs → chapter writing → revision & release. Supports all genres and lengths (short/medium/long). Works with Claude Code, OpenCode, and other skill-enabled assistants.
 
+<p align="center">
+  <img src="assets/novel-craft-banner.png" alt="novel-craft banner" width="100%" />
+</p>
+
 ---
 
 ## 特性 / Features
