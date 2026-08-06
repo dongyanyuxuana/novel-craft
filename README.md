@@ -1,12 +1,12 @@
+<p align="center">
+  <img src="assets/novel-craft-banner.png" alt="novel-craft banner" width="100%" />
+</p>
+
 # novel-craft · 通用小说创作 Skill / Universal Novel-Writing Skill
 
 > 一个面向 AI 编程助手的**通用小说创作技能包**——覆盖从灵感到发布的全流程：访谈定题 → 资料拆分 → 规格技法 → 逐章写作 → 修订发布。支持各类题材与篇幅（短篇/中篇/长篇），适用于 Claude Code / OpenCode 等支持 skill 的编程助手。
 >
 > A **universal novel-writing skill pack** for AI coding assistants — covering the full pipeline from idea to publication: interview → setup → craft specs → chapter writing → revision & release. Supports all genres and lengths (short/medium/long). Works with Claude Code, OpenCode, and other skill-enabled assistants.
-
-<p align="center">
-  <img src="assets/novel-craft-banner.png" alt="novel-craft banner" width="100%" />
-</p>
 
 ---
 
