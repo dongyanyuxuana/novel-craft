@@ -14,11 +14,13 @@
 
 | 中文 | English |
 |---|---|
+| **Agent 架构**：主控编排 + 7 个专业子代理（访谈/资料/写作/敏感场景/审查/发布/记忆） | **Agent architecture**: orchestrator + 7 specialist subagents (interview / setup / writing / sensitive-scenes / review / release / memory) |
 | **五层流程**：访谈 → 资料拆分 → 规格技法 → 写作循环 → 修订与发布 | **5-stage pipeline**: Interview → Setup → Craft Specs → Writing Loop → Revision & Release |
 | **31 份规格文档**：视角/人物/描写/节奏/风格/反AI/世界观/爽点/修订/市场/平台…… | **31 craft spec documents**: POV / character / description / pacing / style / anti-AI / worldbuilding / payoff / revision / market / platform… |
+| **独立质检**：完稿审查官逐段十七维度过筛（不写只审） | **Independent QA**: reviewer screens every paragraph via 17 dimensions |
+| **记忆共享**：记忆官维护连续性（圣经/时间线/伏笔/爽点/canon/issues） | **Shared memory**: memory keeper maintains continuity (bible / timeline / foreshadowing / payoff / canon / issues) |
 | **34 位作家技法库**：世界 12 + 中国 12 + 网文 10 | **34-writer technique library**: 12 world + 12 Chinese + 10 web-novel |
 | **8 大类型风格**：仙侠/古典/修真/武侠/玄幻/耽美/架空/穿越 | **8 genre styles**: xianxia / classical / xiuzhen / wuxia / xuanhuan / danmei / alternate / transmigration |
-| **记忆系统**：故事圣经/弧线/时间线/伏笔台账/爽点/canon/issues——支撑长篇连续性 | **Memory system**: bible / arcs / timeline / foreshadowing / payoff / canon / issues — long-series continuity |
 | **检查脚本**：禁词/转述词/字数自动校验 | **Check script**: auto-verify banned words / POV leaks / word count |
 | **避坑清单**：13 类常见错误沉淀 | **Pitfalls list**: 13 categories of hard-won mistakes |
 | **全流程覆盖**：写什么→怎么写→发哪里 | **Full pipeline**: what → how → where (revision / submission / platform) |
@@ -37,18 +39,38 @@ Place this directory into your project's skill folder, or copy to your skill con
 cp -r novel-craft /your-project/.skill/
 ```
 
+### 启用 Agent 架构 / Enable agent architecture
+
+7 个子代理定义在 `agents/` 下，复制到运行时的 agent 目录：
+
+Copy the 7 subagent definitions from `agents/` to your runtime's agent directory:
+
+```bash
+# OpenCode: project agents
+cp -r agents/. /your-project/.opencode/agent/
+# 或全局 / or global
+cp -r agents/. ~/.config/opencode/agent/
+
+# Claude Code: project subagents
+cp -r agents/. /your-project/.claude/agents/
+# 或全局 / or global
+cp -r agents/. ~/.claude/agents/
+```
+
+未安装 agents 时，SKILL.md 仍可作为单体 skill 工作（主控直接按规格执行，不派子代理）。
+
 ---
 
 ## 快速开始 / Quick Start
 
-1. **首次使用**：让助手读 `SKILL.md`，从①访谈开始（问清题材/主角/冲突）
-   **First use**: have the assistant read `SKILL.md`, start from ①Interview (genre / protagonist / conflict)
-2. **写正文前**：②资料拆分生成项目文档（风格/世界观/角色/大纲/记忆）
-   **Before prose**: ②Setup generates project docs (style / world / characters / outline / memory)
-3. **每章写作**：③规格技法（视角/反AI/人物/节奏）→ ④写作循环
-   **Per chapter**: ③Craft specs (POV / anti-AI / character / pacing) → ④Writing loop
-4. **完稿**：⑤修订（五层）→ Beta 阅读 → 投稿/发布
-   **Finish**: ⑤Revision (5 layers) → Beta readers → submission / publishing
+1. **首次使用**：让助手读 `SKILL.md`，主控派「访谈立项官」从①访谈开始（问清题材/主角/冲突）
+   **First use**: have the assistant read `SKILL.md`; orchestrator dispatches the Interview Architect for ①Interview
+2. **写正文前**：主控派「资料架构师」②生成项目文档（风格/世界观/角色/大纲/记忆）
+   **Before prose**: orchestrator dispatches Setup Architect for ②Setup
+3. **每章写作**：主控派「正文写手」③④写作；涉敏感场景派「敏感场景师」专项
+   **Per chapter**: dispatches Novel Writer for ③④; dispatches Sensitive-Scene Specialist for adult scenes
+4. **完稿**：主控派「完稿审查官」独立质检 →「记忆官」回写 →「修订发布官」⑤修订/发布
+   **Finish**: Reviewer (independent QA) → Memory Keeper (recap) → Release Officer for ⑤
 
 ---
 
@@ -56,8 +78,17 @@ cp -r novel-craft /your-project/.skill/
 
 ```
 novel-craft/
-├── SKILL.md                  # 主入口：流程总览 + 规格索引 + 核心铁律
-│                             # Main entry: pipeline + spec index + core rules
+├── SKILL.md                  # 主控入口：Agent 编排 + 五层流程 + 规格索引 + 核心铁律
+│                             # Orchestrator: agent dispatch + pipeline + spec index + core rules
+├── agents/                   # 7 个专业子代理定义（复制到运行时 agent 目录启用）
+│                             # 7 specialist subagent definitions (copy to runtime agent dir)
+│   ├── interview-architect.md   # 访谈立项官 / Interview Architect
+│   ├── setup-architect.md       # 资料架构师 / Setup Architect
+│   ├── novel-writer.md          # 正文写手 / Novel Writer
+│   ├── scene-specialist.md      # 敏感场景师 / Sensitive-Scene Specialist
+│   ├── paragraph-reviewer.md    # 完稿审查官 / Paragraph Reviewer
+│   ├── release-officer.md       # 修订发布官 / Release Officer
+│   └── memory-keeper.md         # 记忆官 / Memory Keeper
 ├── README.md                 # 本文档 / This file
 ├── LICENSE                   # MIT 许可 / MIT License
 ├── CONTRIBUTING.md           # 贡献指南 / Contribution guide

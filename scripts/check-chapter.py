@@ -19,6 +19,10 @@
 1. "操"排除专名"操偶"(若本书把"操偶"作为专名(如某玩法名)则放行——pattern 中 `(?!偶)` 即此意)。
 2. 转述词以"后接标点"判定,不误伤"她想起/她想跑"等回忆/意愿动词。
 3. "## 构师备注"元数据段整体跳过(备注自述性文字不计入正文,不检查字数与禁词)。
+4. 文档模式:路径含 agents//references//templates/ 或首行是 frontmatter(---)的文件视为"文档"
+   (agent 定义/规格文档),字数门槛放宽到 500 字,且跳过禁词检查——规格文档常要解释禁词本身
+   (避坑清单讲"然后"是禁词/性场景规格讲"操"是错别字),这是文档正当内容。
+   小说正文(正文/ 目录)仍是 3500 成章线,禁词全查。
 """
 
 import re
@@ -48,6 +52,14 @@ COMPILED = [(re.compile(p), tag) for p, tag in PATTERNS]
 # 构师备注段标记:从此行起(含)视为元数据,跳过
 NOTE_MARKER = re.compile(r"^\s*##\s*构师备注", re.MULTILINE)
 
+# 文档模式:agent 定义/规格文档(有 frontmatter 或以 --- 开头)不是章节,
+# 字数门槛放宽到 500 字;且跳过禁词检查——规格文档常要解释禁词本身
+# (如避坑清单讲"然后"是禁词、性场景规格讲"操"是错别字),这是文档正当内容。
+# 小说正文仍是 3500 全查。
+FRONTMATTER = re.compile(r"^\s*---\s*$", re.MULTILINE)
+DOC_MIN_WORDS = 500
+CHAPTER_MIN_WORDS = 3500
+
 
 def check_file(path: Path) -> list[str]:
     issues = []
@@ -56,6 +68,12 @@ def check_file(path: Path) -> list[str]:
     except UnicodeDecodeError:
         text = path.read_text(encoding="gbk")
 
+    # 判定文档模式:路径含 agents/ 或 references/ 或 templates/,或首行是 frontmatter
+    rel = str(path).replace("\\", "/")
+    is_doc = ("agents/" in rel) or ("references/" in rel) or ("templates/" in rel)
+    if not is_doc and FRONTMATTER.match(text):
+        is_doc = True
+
     # 切掉"## 构师备注"元数据段,只检查正文
     body_text = NOTE_MARKER.split(text)[0]
 
@@ -63,10 +81,14 @@ def check_file(path: Path) -> list[str]:
     body = re.sub(r"^\s*#.*$", "", body_text, flags=re.MULTILINE)
     body = re.sub(r"\s", "", body)
     word_count = len(body)
-    if word_count < 3500:
-        issues.append(f"字数不足: {word_count} 字 (<3500)")
+    min_words = DOC_MIN_WORDS if is_doc else CHAPTER_MIN_WORDS
+    if word_count < min_words:
+        mode = "文档" if is_doc else "成章"
+        issues.append(f"字数不足: {word_count} 字 (<{min_words} {mode}线)")
 
-    # 禁词/转述词/上帝视角(仅正文行)
+    # 禁词/转述词/上帝视角(仅正文行;文档模式跳过——规格文档会解释禁词本身)
+    if is_doc:
+        return issues
     for i, line in enumerate(body_text.split("\n"), 1):
         for pattern, tag in COMPILED:
             if pattern.search(line):

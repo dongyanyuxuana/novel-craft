@@ -9,6 +9,11 @@ All notable changes to this project will be documented in this file.
 
 ### Added / 新增
 
+**Agent 架构（全面转向 agent）**
+- `agents/` 新增 7 个专业子代理定义：`interview-architect`(访谈立项官)/`setup-architect`(资料架构师)/`novel-writer`(正文写手)/`scene-specialist`(敏感场景师)/`paragraph-reviewer`(完稿审查官)/`release-officer`(修订发布官)/`memory-keeper`(记忆官)
+- `SKILL.md` 重写为主控编排版：五层流程 + agent 调度规则 + 主控验收标准 + 规格索引(标注各 agent 挂载)
+- 核心铁律 13 条（新增"记忆必回写"）
+
 **规格文档（5 份新增，共 31 份）**
 - `22-scene-interaction.md`：场景人物交互（对话为关系服务/动作活人化/表情落点/感情传递/剧情连贯/伏笔藏不硬塞）——**每章必读**
 - `23-prose-expression.md`：文笔表达七维度（语句通顺/优美表达逻辑/段落手法/全章连贯风格/留白充实/虚实表达/人物品性立体）——**每章必读**
@@ -18,11 +23,11 @@ All notable changes to this project will be documented in this file.
 
 ### Changed / 变更
 
-- `SKILL.md`：引用表新增 22/23/24/25/26；核心铁律新增第 8/9/10/11/12 条；敏感场景路由 6 更新
+- `SKILL.md`：单体 skill → Agent 编排主控（未安装 agents 时仍可单体工作）；引用表标注各 agent 挂载；核心铁律扩至 13 条
 - `00b-project-setup.md`：写前必读新增第 7/8/9/10/11 项
 - `templates/character-card.md`：身体档案全面展开（面部身形/私密部位/标记损伤/装饰随身/生活生理/性档案/身体=命运）
 - `02-character.md`：形貌维度指向 25 号；活人化扩充"写人就是人"（吃喝拉撒睡/身体细节）
-- `README.md`：规格数量 29→31，目录结构补 22/23/24/25/26
+- `README.md`：新增 Agent 架构特性 + 启用方式（复制 agents/ 到 OpenCode/Claude Code 的 agent 目录）；规格数量 29→31
 
 ---
 
