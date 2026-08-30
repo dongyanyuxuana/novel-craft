@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file.
 - `24-group-sex.md`：自愿多人性场景（掌场者/摆位/展示仪式/身体差异化/逐房临幸/技巧控场/配合者/等待者状态/收尾余韵/实战拆解/题材置换表）——仅当涉及自愿群交/多人夜戏
 - `25-body-anatomy.md`：人体档案规格（全维度身体档案：面部/身形/私密部位/标记损伤/装饰随身/生活生理/性档案——写人就是人，差异化不互抄）——**建档必读**
 - `26-paragraph-review.md`：段落审查规格（**升级为十七维度**：段内八维=场景/事物/逻辑/人物/表达/技法/句式/对白 + 段间九维=剧情/衔接/连贯/合理/常识/常态/反常/类型/**人性**；段级病 21 类含段间/真实性/类型/人性病 11 类）——**完稿逐段过筛**
+- **CodeBuddy 支持**：新增 CodeBuddy 安装说明——技能放入 `~/.codebuddy/skills/`(用户级)或项目 `.codebuddy/skills/`,CodeBuddy 自动识别 `SKILL.md`,无需复制 `agents/`;README 安装章节与 SKILL.md 描述同步补充 CodeBuddy
 
 ### Changed / 变更
 
@@ -28,6 +29,7 @@ All notable changes to this project will be documented in this file.
 - `templates/character-card.md`：身体档案全面展开（面部身形/私密部位/标记损伤/装饰随身/生活生理/性档案/身体=命运）
 - `02-character.md`：形貌维度指向 25 号；活人化扩充"写人就是人"（吃喝拉撒睡/身体细节）
 - `README.md`：新增 Agent 架构特性 + 启用方式（复制 agents/ 到 OpenCode/Claude Code 的 agent 目录）；规格数量 29→31
+- `README.md` / `SKILL.md`：支持助手列表补充 CodeBuddy（Claude Code / OpenCode / CodeBuddy）；新增 CodeBuddy 安装说明（技能放入 `~/.codebuddy/skills/` 或项目 `.codebuddy/skills/`，自动识别 SKILL.md，无需复制 agents/）
 
 ---
 

@@ -4,9 +4,9 @@
 
 # novel-craft · 通用小说创作 Skill / Universal Novel-Writing Skill
 
-> 一个面向 AI 编程助手的**通用小说创作技能包**——覆盖从灵感到发布的全流程：访谈定题 → 资料拆分 → 规格技法 → 逐章写作 → 修订发布。支持各类题材与篇幅（短篇/中篇/长篇），适用于 Claude Code / OpenCode 等支持 skill 的编程助手。
+> 一个面向 AI 编程助手的**通用小说创作技能包**——覆盖从灵感到发布的全流程：访谈定题 → 资料拆分 → 规格技法 → 逐章写作 → 修订发布。支持各类题材与篇幅（短篇/中篇/长篇），适用于 Claude Code / OpenCode / CodeBuddy 等支持 skill 的编程助手。
 >
-> A **universal novel-writing skill pack** for AI coding assistants — covering the full pipeline from idea to publication: interview → setup → craft specs → chapter writing → revision & release. Supports all genres and lengths (short/medium/long). Works with Claude Code, OpenCode, and other skill-enabled assistants.
+> A **universal novel-writing skill pack** for AI coding assistants — covering the full pipeline from idea to publication: interview → setup → craft specs → chapter writing → revision & release. Supports all genres and lengths (short/medium/long). Works with Claude Code, OpenCode, CodeBuddy, and other skill-enabled assistants.
 
 ---
 
@@ -39,6 +39,20 @@ Place this directory into your project's skill folder, or copy to your skill con
 cp -r novel-craft /your-project/.skill/
 ```
 
+### CodeBuddy 安装 / Install for CodeBuddy
+
+CodeBuddy 以 `SKILL.md` 为入口自动识别技能，无需复制 `agents/` 子代理文件（主控按本文件五层流程直接编排；`agents/` 下的 7 份角色定义可随时作为委派说明传给 CodeBuddy 子代理）：
+
+Copy the skill into CodeBuddy's skills folder; CodeBuddy auto-detects `SKILL.md` (no separate agent dir needed):
+
+```bash
+# 用户级（所有项目可用）/ user scope — available in every workspace
+cp -r novel-craft ~/.codebuddy/skills/
+
+# 或项目级 / or project scope — committed with the repo
+cp -r novel-craft /your-project/.codebuddy/skills/
+```
+
 ### 启用 Agent 架构 / Enable agent architecture
 
 7 个子代理定义在 `agents/` 下，复制到运行时的 agent 目录：
@@ -57,7 +71,7 @@ cp -r agents/. /your-project/.claude/agents/
 cp -r agents/. ~/.claude/agents/
 ```
 
-未安装 agents 时，SKILL.md 仍可作为单体 skill 工作（主控直接按规格执行，不派子代理）。
+未安装 agents 时（含 CodeBuddy 默认情况），SKILL.md 仍可作为单体 skill 工作（主控直接按规格执行，不派子代理）；`agents/` 下的 7 份角色定义可随时作为委派说明传给子代理。
 
 ---
 
